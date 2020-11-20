@@ -14,7 +14,8 @@ class RegisterPage extends StatelessWidget {
           DefaultBackground(
               color: AppColors.defaultBackgroundColor,
               imageName: "iconChef",
-              title: 'Register'),
+              title: 'Register',
+              isHome: false),
           Positioned(
               left: 16,
               right: 16,
@@ -40,13 +41,14 @@ class RegisterPage extends StatelessWidget {
       ),
     );
   }
-  
+
   Widget createForm({BuildContext context}) {
     return Form(
         key: _formKey,
         child: Column(children: <Widget>[
           TextFormField(
-            decoration: InputDecoration(labelText: 'Enter your name'),
+            decoration: InputDecoration(labelText: 'Enter your name', 
+            prefixIcon: Icon(Icons.person)),
             validator: (value) {
               if (value.isEmpty) {
                 return 'Please enter your name';
@@ -55,7 +57,8 @@ class RegisterPage extends StatelessWidget {
             },
           ),
           TextFormField(
-            decoration: InputDecoration(labelText: 'Enter your email'),
+            decoration: InputDecoration(labelText: 'Enter your email',
+                                        prefixIcon: Icon(Icons.email)),
             validator: (value) {
               if (value.isEmpty) {
                 return 'Please enter your email';
@@ -64,7 +67,8 @@ class RegisterPage extends StatelessWidget {
             },
           ),
           TextFormField(
-            decoration: InputDecoration(labelText: 'Enter your password'),
+            decoration: InputDecoration(labelText: 'Enter your password',
+                                        prefixIcon: Icon(Icons.lock)),
             validator: (value) {
               if (value.isEmpty) {
                 return 'Please enter yor password';
@@ -73,7 +77,8 @@ class RegisterPage extends StatelessWidget {
             },
           ),
           TextFormField(
-            decoration: InputDecoration(labelText: 'Confirm your password'),
+            decoration: InputDecoration(labelText: 'Confirm your password', 
+                                        prefixIcon: Icon(Icons.lock)),
             validator: (value) {
               if (value.isEmpty) {
                 return 'Please enter confirm your password';

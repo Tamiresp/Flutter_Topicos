@@ -5,13 +5,17 @@ class DefaultBackground extends StatelessWidget {
   final Color color;
   final String imageName;
   final String title;
+  final bool isHome;
 
-  DefaultBackground({this.color, this.imageName, this.title});
+  DefaultBackground({this.color, this.imageName, this.title, this.isHome});
 
   build(BuildContext context) {
     return Scaffold(
       body: Stack(
-        children: [backgroundImg(), backButton(context: context)],
+        children: [
+          backgroundImg(),
+          backButton(context: context, isHome: isHome)
+        ],
       ),
     );
   }
@@ -24,11 +28,10 @@ class DefaultBackground extends StatelessWidget {
           color: color,
         ),
         Positioned(
-          top: 16,
-          child: imageName != null
-            ? Image.asset("images/$imageName.png")
-            : SizedBox.shrink()
-        )
+            top: 16,
+            child: imageName != null
+                ? Image.asset("images/$imageName.png")
+                : SizedBox.shrink())
       ],
     );
   }
@@ -48,7 +51,7 @@ class DefaultBackground extends StatelessWidget {
     ]);
   }
 
-  Widget backButton({BuildContext context}) {
+  Widget backButton({BuildContext context, bool isHome}) {
     var textStyle = TextStyle(
         fontSize: 24,
         color: AppColors.primaryTextColor,
@@ -61,9 +64,14 @@ class DefaultBackground extends StatelessWidget {
           children: [
             IconButton(
                 color: AppColors.primaryTextColor,
-                icon: Icon(Icons.arrow_back_ios),
+                icon: isHome ? Icon(null) : Icon(Icons.arrow_back_ios),
                 onPressed: () {
-                  Navigator.of(context).pop();
+                  if (isHome){
+
+                  } else {
+                    Navigator.of(context).pop();
+                  }
+                  
                 }),
             Text(
               title,

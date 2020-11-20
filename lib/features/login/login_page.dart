@@ -37,7 +37,7 @@ class LoginPage extends StatelessWidget {
                 createTextField(
                     data: "Enter your name",
                     isObscureText: false,
-                    iconName: Icon(Icons.perm_identity_sharp),
+                    iconName: Icon(Icons.person),
                     visibleIcon: false
                    ),
           
@@ -72,7 +72,7 @@ class LoginPage extends StatelessWidget {
                       navigateToRegisterPage(context: context);
                     },
                     child: createButtonText(
-                        data: "Sign Out", color: Colors.blue)
+                        data: "Sign Up", color: Colors.blue)
                   ),
                 ),
                 SizedBox(height: 16),
