@@ -10,7 +10,8 @@ class RegisterPage extends StatelessWidget {
         children: [
           DefaultBackground(
             color: AppColors.defaultBackgroundColor,
-            imageName: "iconChef"
+            imageName: "iconChef",
+            title: 'Register'
           )
         ],
       ),
