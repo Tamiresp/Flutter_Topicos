@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:project_topicos_avancados/features/home/home_page.dart';
+import 'package:project_topicos_avancados/features/register/register_page.dart';
 import 'package:project_topicos_avancados/utils/app_colors.dart';
 
 class LoginPage extends StatelessWidget {
@@ -64,9 +65,36 @@ class LoginPage extends StatelessWidget {
                     data: 'Forgot password?'
                   ),
                 SizedBox(height: 16),
+                Container(
+                  width: buttonWidth,
+                  child: CupertinoButton(
+                    onPressed: () {
+                      navigateToRegisterPage(context: context);
+                    },
+                    child: createButtonText(
+                        data: "Sign Out", color: Colors.blue)
+                  ),
+                ),
+                SizedBox(height: 16),
                 createText(
                     data: 'OR'
-                  )
+                  ),
+                SizedBox(height: 16),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image(
+                        image: AssetImage("images/iconGoogle.png"),
+                        fit : BoxFit.fill,
+                     ),
+                     SizedBox(width: 16),
+                     Image(
+                        image: AssetImage("images/Facebook.png"),
+                        fit : BoxFit.fill,
+                     ),
+                  ],
+                ),
+                SizedBox(height: 16)
               ]
             ),
           ),
@@ -77,6 +105,11 @@ class LoginPage extends StatelessWidget {
   navigateToHomePage({BuildContext context}) {
     Navigator.of(context)
         .push(MaterialPageRoute(builder: (BuildContext context) => HomePage()));
+  }
+
+  navigateToRegisterPage({BuildContext context}) {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (BuildContext context) => RegisterPage()));
   }
 
   Text createButtonText({String data, Color color}) {
