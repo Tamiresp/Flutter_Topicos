@@ -23,9 +23,12 @@ class DefaultBackground extends StatelessWidget {
         Container(
           color: color,
         ),
-        imageName != null
+        Positioned(
+          top: 16,
+          child: imageName != null
             ? Image.asset("images/$imageName.png")
             : SizedBox.shrink()
+        )
       ],
     );
   }
