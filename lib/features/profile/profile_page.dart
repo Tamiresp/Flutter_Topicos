@@ -1,20 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:project_topicos_avancados/data/user.dart';
 import 'package:project_topicos_avancados/default_background/default_background.dart';
 import 'package:project_topicos_avancados/features/home/home_page.dart';
 import 'package:project_topicos_avancados/utils/app_colors.dart';
 
-class ProfilePage extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() {
-    return new ProfilePageState();
-  }
-}
-
-class ProfilePageState extends State<ProfilePage> {
-  final TextEditingController _currencyController = new TextEditingController();
-  int _radioValue = 0;
-
+class ProfilePage extends StatelessWidget {
   build(BuildContext context) {
     return Scaffold(
       body: Stack(
@@ -23,6 +14,7 @@ class ProfilePageState extends State<ProfilePage> {
               color: AppColors.grayBackgroundColor,
               title: 'My Profile',
               isHome: true),
+        
           createTitle(data: 'Information', top: 150),
           createProfileCard(),
           createTitle(data: 'Payment Method', top: 300),
@@ -106,7 +98,12 @@ class ProfilePageState extends State<ProfilePage> {
           padding: EdgeInsets.only(left: 20, right: 20),
           child: Column(children: [
             SizedBox(height: 16),
-            radioBtn(context),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                MyStatefulWidget()
+                    ],
+            ),
             SizedBox(height: 16)
           ]),
         ),
@@ -137,44 +134,53 @@ class ProfilePageState extends State<ProfilePage> {
     Navigator.of(context)
         .push(MaterialPageRoute(builder: (BuildContext context) => HomePage()));
   }
+}
 
-  void _handleRadioValueChange(int value) {
-    setState(() {
-      _radioValue = value;
+class MyStatefulWidget extends StatefulWidget {
+  MyStatefulWidget({Key key}) : super(key: key);
 
-      switch (_radioValue) {
-        case 0:
-          break;
-        case 1:
-          break;
-        case 2:
-          break;
-      }
-    });
-  }
+  @override
+  _MyStatefulWidgetState createState() => _MyStatefulWidgetState();
+}
 
-  Widget radioBtn(BuildContext context) {
+enum PaymentMethod { card, bank, paypal }
+class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+  PaymentMethod _character = PaymentMethod.card;
+
+  @override
+  Widget build(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
-        Radio(
-          value: 0,
-          groupValue: _radioValue,
-          onChanged: _handleRadioValueChange,
+        RadioListTile<PaymentMethod>(
+          title: const Text('Card'),
+          value: PaymentMethod.card,
+          groupValue: _character,
+          onChanged: (PaymentMethod value) {
+            setState(() {
+              _character = value;
+            });
+          },
         ),
-        Text('Card'),
-        Radio(
-          value: 1,
-          groupValue: _radioValue,
-          onChanged: _handleRadioValueChange,
+        RadioListTile<PaymentMethod>(
+          title: const Text('Bank Account'),
+          value: PaymentMethod.bank,
+          groupValue: _character,
+          onChanged: (PaymentMethod value) {
+            setState(() {
+              _character = value;
+            });
+          },
         ),
-        Text('Bank Account'),
-        Radio(
-          value: 2,
-          groupValue: _radioValue,
-          onChanged: _handleRadioValueChange,
+        RadioListTile<PaymentMethod>(
+          title: const Text('Paypal'),
+          value: PaymentMethod.paypal,
+          groupValue: _character,
+          onChanged: (PaymentMethod value) {
+            setState(() {
+              _character = value;
+            });
+          },
         ),
-        Text('Paypal'),
       ],
     );
   }
