@@ -4,16 +4,25 @@ import 'package:project_topicos_avancados/default_background/default_background.
 import 'package:project_topicos_avancados/features/home/home_page.dart';
 import 'package:project_topicos_avancados/utils/app_colors.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return new ProfilePageState();
+  }
+}
+
+class ProfilePageState extends State<ProfilePage> {
+  final TextEditingController _currencyController = new TextEditingController();
+  int _radioValue = 0;
+
   build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
           DefaultBackground(
               color: AppColors.grayBackgroundColor,
-              title: 'Profile',
+              title: 'My Profile',
               isHome: true),
-        
           createTitle(data: 'Information', top: 150),
           createProfileCard(),
           createTitle(data: 'Payment Method', top: 300),
@@ -23,17 +32,11 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
-  createRadioBtn() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-    );
-  }
-
   createTitle({String data, double top}) {
     return Positioned(
       top: top,
       left: 20,
-      child: createText(data: data, size: 14, fontWeight: FontWeight.bold),
+      child: createText(data: data, size: 16, fontWeight: FontWeight.bold),
     );
   }
 
@@ -54,27 +57,28 @@ class ProfilePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Image(
-                  image: AssetImage("images/chef.png"),
+                  image: AssetImage("images/índice.png"),
                   height: 50,
                   width: 50,
-                  fit: BoxFit.fill,
+                  fit: BoxFit.cover,
                 ),
                 SizedBox(width: 16),
                 Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     createText(
                         data: 'Tamires Pereira',
-                        size: 12,
+                        size: 14,
                         fontWeight: FontWeight.bold),
                     SizedBox(height: 12),
                     createText(
                         data: 'tamires@gmail.com',
-                        size: 11,
+                        size: 12,
                         fontWeight: FontWeight.normal),
                     SizedBox(height: 12),
                     createText(
                         data: 'No information Adress',
-                        size: 11,
+                        size: 12,
                         fontWeight: FontWeight.normal),
                   ],
                 ),
@@ -102,38 +106,7 @@ class ProfilePage extends StatelessWidget {
           padding: EdgeInsets.only(left: 20, right: 20),
           child: Column(children: [
             SizedBox(height: 16),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Image(
-                  image: AssetImage("images/chef.png"),
-                  height: 50,
-                  width: 50,
-                  fit: BoxFit.fill,
-                ),
-                SizedBox(width: 16),
-                Column(
-                  children: [
-                    createText(
-                        data: 'Tamires Pereira',
-                        size: 12,
-                        fontWeight: FontWeight.bold),
-                    SizedBox(height: 12),
-                    createText(
-                        data: 'tamires@gmail.com',
-                        size: 11,
-                        fontWeight: FontWeight.normal),
-                    SizedBox(height: 12),
-                    createText(
-                        data: 'No information Adress',
-                        size: 11,
-                        fontWeight: FontWeight.normal),
-                  ],
-                ),
-                SizedBox(width: 60),
-                Icon(Icons.edit)
-              ],
-            ),
+            radioBtn(context),
             SizedBox(height: 16)
           ]),
         ),
@@ -163,5 +136,46 @@ class ProfilePage extends StatelessWidget {
   navigateToHomePage({BuildContext context}) {
     Navigator.of(context)
         .push(MaterialPageRoute(builder: (BuildContext context) => HomePage()));
+  }
+
+  void _handleRadioValueChange(int value) {
+    setState(() {
+      _radioValue = value;
+
+      switch (_radioValue) {
+        case 0:
+          break;
+        case 1:
+          break;
+        case 2:
+          break;
+      }
+    });
+  }
+
+  Widget radioBtn(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: <Widget>[
+        Radio(
+          value: 0,
+          groupValue: _radioValue,
+          onChanged: _handleRadioValueChange,
+        ),
+        Text('Card'),
+        Radio(
+          value: 1,
+          groupValue: _radioValue,
+          onChanged: _handleRadioValueChange,
+        ),
+        Text('Bank Account'),
+        Radio(
+          value: 2,
+          groupValue: _radioValue,
+          onChanged: _handleRadioValueChange,
+        ),
+        Text('Paypal'),
+      ],
+    );
   }
 }
