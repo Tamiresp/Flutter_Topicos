@@ -3,30 +3,28 @@ import 'package:project_topicos_avancados/utils/app_colors.dart';
 
 class DefaultBackground extends StatelessWidget {
   final Color color;
-  final String imageName;
   final String title;
   final bool isHome;
 
-  DefaultBackground({this.color, this.imageName, this.title, this.isHome});
+  DefaultBackground({this.color, this.title, this.isHome});
 
   build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
-          backgroundImg(),
+          Container(
+            color: color,
+          ),
           backButton(context: context, isHome: isHome)
         ],
       ),
     );
   }
 
-  Widget backgroundImg() {
+  Widget backgroundImg({String imageName}) {
     return Stack(
       alignment: Alignment.topRight,
       children: [
-        Container(
-          color: color,
-        ),
         Positioned(
             top: 16,
             child: imageName != null
@@ -66,12 +64,7 @@ class DefaultBackground extends StatelessWidget {
                 color: AppColors.primaryTextColor,
                 icon: isHome ? Icon(null) : Icon(Icons.arrow_back_ios),
                 onPressed: () {
-                  if (isHome){
-
-                  } else {
-                    Navigator.of(context).pop();
-                  }
-                  
+                  Navigator.of(context, rootNavigator: true).pop();
                 }),
             Text(
               title,

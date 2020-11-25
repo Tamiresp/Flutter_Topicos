@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:project_topicos_avancados/default_background/default_background.dart';
 import 'package:project_topicos_avancados/features/home/home_page.dart';
 import 'package:project_topicos_avancados/utils/app_colors.dart';
+import 'package:project_topicos_avancados/utils/botton_navigation.dart';
 
 class RegisterPage extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
@@ -12,10 +13,11 @@ class RegisterPage extends StatelessWidget {
       body: Stack(
         children: [
           DefaultBackground(
-              color: AppColors.defaultBackgroundColor,
-              imageName: "iconChef",
+              color: Colors.white,
               title: 'Register',
               isHome: false),
+          DefaultBackground().backgroundImg(imageName: "iconChef"),
+
           Positioned(
               left: 16,
               right: 16,
@@ -98,6 +100,6 @@ class RegisterPage extends StatelessWidget {
 
   navigateToHomePage({BuildContext context}) {
     Navigator.of(context)
-        .push(MaterialPageRoute(builder: (BuildContext context) => HomePage()));
+        .push(MaterialPageRoute(builder: (BuildContext context) => BottomNavigation()));
   }
 }
