@@ -9,7 +9,6 @@ class BottomNavigation extends StatelessWidget {
   Widget build(BuildContext context) {
    
     return new MaterialApp(
-      color: Colors.yellow,
       home: DefaultTabController(
         length: 3,
         child: new Scaffold(
@@ -24,6 +23,7 @@ class BottomNavigation extends StatelessWidget {
             tabs: [
               Tab(
                 icon: new Icon(Icons.home),
+                
               ),
               Tab(
                 icon: new Icon(Icons.person),
@@ -38,7 +38,7 @@ class BottomNavigation extends StatelessWidget {
             indicatorPadding: EdgeInsets.all(5.0),
             indicatorColor: AppColors.loginBackgroundColor,
           ),
-          backgroundColor: AppColors.defaultBackgroundColor,
+          backgroundColor: AppColors.grayBackgroundColor,
         ),
       ),
     );

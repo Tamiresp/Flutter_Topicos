@@ -5,6 +5,6 @@ class AppColors {
   static Color secondaryTextColor = Color(0xff9e9e9e);
   static Color loginBackgroundColor = Color(0xffdd2c00);
   static Color defaultBackgroundColor = Color(0xffF6F5F5);
-  static Color grayBackgroundColor = Color(0xffe0e0e0);
+  static Color grayBackgroundColor = Color(0xffeeeeee);
 
 }

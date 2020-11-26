@@ -13,7 +13,7 @@ class HomePage extends StatelessWidget {
               color: AppColors.grayBackgroundColor,
               title: '',
               isHome: true),
-          TabPage(),
+          TabPage()
         ],
       
       ),

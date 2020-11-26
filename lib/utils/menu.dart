@@ -7,7 +7,10 @@ import 'app_colors.dart';
 class Menu extends StatelessWidget {
   build(BuildContext context) {
     return Drawer(
-      child: ListView(
+      
+      child: Container(
+        color: AppColors.grayBackgroundColor,
+        child: ListView(
         children: <Widget>[
           UserAccountsDrawerHeader(
               decoration: BoxDecoration(
@@ -17,7 +20,7 @@ class Menu extends StatelessWidget {
               accountEmail: Text("tamires@gmail.com"),
               currentAccountPicture: CircleAvatar(
                   backgroundColor: AppColors.defaultBackgroundColor,
-                  child: Icon(Icons.person))),
+                  child: Image(image: AssetImage('images/profile.png')))),
           ListTile(
             title: Text('Settings'),
             leading: Icon(Icons.settings),
@@ -33,7 +36,7 @@ class Menu extends StatelessWidget {
             },
           ),
         ],
-      ),
+      ),)
     );
   }
 

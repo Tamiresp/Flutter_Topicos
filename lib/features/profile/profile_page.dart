@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:project_topicos_avancados/data/user.dart';
 import 'package:project_topicos_avancados/default_background/default_background.dart';
 import 'package:project_topicos_avancados/features/home/home_page.dart';
 import 'package:project_topicos_avancados/utils/app_colors.dart';
@@ -39,7 +38,7 @@ class ProfilePage extends StatelessWidget {
       left: 16,
       child: Container(
         decoration: BoxDecoration(
-            color: AppColors.defaultBackgroundColor,
+            color: Colors.white,
             borderRadius: BorderRadius.all(Radius.circular(30))),
         child: Container(
           padding: EdgeInsets.only(left: 20, right: 20),
@@ -49,7 +48,7 @@ class ProfilePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Image(
-                  image: AssetImage("images/índice.png"),
+                  image: AssetImage("images/profile.png"),
                   height: 50,
                   width: 50,
                   fit: BoxFit.cover,
@@ -92,7 +91,7 @@ class ProfilePage extends StatelessWidget {
       left: 16,
       child: Container(
         decoration: BoxDecoration(
-            color: AppColors.defaultBackgroundColor,
+            color: Colors.white,
             borderRadius: BorderRadius.all(Radius.circular(30))),
         child: Container(
           padding: EdgeInsets.only(left: 20, right: 20),

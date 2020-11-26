@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:project_topicos_avancados/features/register/register_page.dart';
 import 'package:project_topicos_avancados/utils/app_colors.dart';
-import 'package:project_topicos_avancados/utils/botton_navigation.dart';
+import 'package:project_topicos_avancados/features/navigation/botton_navigation.dart';
 
 class LoginPage extends StatelessWidget {
   build(BuildContext context) {

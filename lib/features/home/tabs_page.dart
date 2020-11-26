@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_topicos_avancados/features/grid/grid_page.dart';
 import 'package:project_topicos_avancados/utils/app_colors.dart';
 
 class TabPage extends StatelessWidget {
@@ -8,6 +9,7 @@ class TabPage extends StatelessWidget {
       home: DefaultTabController(
         length: 3,
         child: Scaffold(
+          backgroundColor: AppColors.grayBackgroundColor,
           appBar: AppBar(
             toolbarHeight: 150,
               title: Text('Delicious\nfood for you', style: TextStyle(fontSize: 24),),
@@ -31,9 +33,9 @@ class TabPage extends StatelessWidget {
               )),
           body: TabBarView(
             children: [
-              Icon(Icons.directions_car),
-              Icon(Icons.directions_transit),
-              Icon(Icons.directions_bike),
+              GridPage(tab: 1),
+              GridPage(tab: 2),
+              GridPage(tab: 3)
             ],
           ),
         ),
