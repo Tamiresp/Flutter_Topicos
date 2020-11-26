@@ -14,9 +14,9 @@ class ProfilePage extends StatelessWidget {
               title: 'My Profile',
               isHome: true),
         
-          createTitle(data: 'Information', top: 150),
+          createTitle(data: 'Information', top: 120),
           createProfileCard(),
-          createTitle(data: 'Payment Method', top: 300),
+          createTitle(data: 'Payment Method', top: 280),
           createPaymentCard()
         ],
       ),
@@ -33,7 +33,7 @@ class ProfilePage extends StatelessWidget {
 
   createProfileCard() {
     return Positioned(
-      top: 180,
+      top: 150,
       right: 16,
       left: 16,
       child: Container(
@@ -86,7 +86,7 @@ class ProfilePage extends StatelessWidget {
 
   createPaymentCard() {
     return Positioned(
-      top: 330,
+      top: 310,
       right: 16,
       left: 16,
       child: Container(
@@ -96,24 +96,18 @@ class ProfilePage extends StatelessWidget {
         child: Container(
           padding: EdgeInsets.only(left: 20, right: 20),
           child: Column(children: [
-            SizedBox(height: 16),
+            SizedBox(height: 8),
             Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 MyStatefulWidget()
                     ],
             ),
-            SizedBox(height: 16)
+            SizedBox(height: 8)
           ]),
         ),
       ),
     );
-  }
-
-  Text createButtonText({String data, Color color}) {
-    var textStyle =
-        TextStyle(fontSize: 15, fontWeight: FontWeight.w500, color: color);
-    return Text(data, style: textStyle);
   }
 
   Text createText({String data, double size, FontWeight fontWeight}) {
@@ -160,6 +154,11 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             });
           },
         ),
+        Row(children: [
+          Expanded(
+            child: Divider(color: AppColors.secondaryTextColor, indent: 25)
+        ),
+        ],),
         RadioListTile<PaymentMethod>(
           title: const Text('Bank Account'),
           value: PaymentMethod.bank,
@@ -170,6 +169,11 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             });
           },
         ),
+        Row(children: [
+          Expanded(
+            child: Divider(color: AppColors.secondaryTextColor, indent: 25)
+        ),
+        ],),
         RadioListTile<PaymentMethod>(
           title: const Text('Paypal'),
           value: PaymentMethod.paypal,
