@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:project_topicos_avancados/data/user.dart';
 import 'package:project_topicos_avancados/features/login/login_page.dart';
 import 'package:project_topicos_avancados/features/profile/profile_page.dart';
 
 import 'app_colors.dart';
 
 class Menu extends StatelessWidget {
+  var user = User();
   build(BuildContext context) {
     return Drawer(
       
@@ -16,11 +18,11 @@ class Menu extends StatelessWidget {
               decoration: BoxDecoration(
                 color: AppColors.loginBackgroundColor,
               ),
-              accountName: Text("Tamires"),
-              accountEmail: Text("tamires@gmail.com"),
+              accountName: Text(user.name),
+              accountEmail: Text(user.email),
               currentAccountPicture: CircleAvatar(
                   backgroundColor: AppColors.defaultBackgroundColor,
-                  child: Image(image: AssetImage('images/profile.png')))),
+                  child: Image(image: AssetImage(user.imageName)))),
           ListTile(
             title: Text('Settings'),
             leading: Icon(Icons.settings),

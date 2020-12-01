@@ -32,3 +32,41 @@ const List<Food> foodList = const <Food>[
       price: 'R\$ 12,00',
       imageName: 'images/food3.png'),
 ];
+
+const List<Food> drinksList = const <Food>[
+  const Food(
+      name: 'Caipirinha',
+      price: 'R\$ 20,00',
+      imageName: 'images/drink.png'),
+  const Food(
+      name: 'Lemon drink',
+      price: 'R\$ 12,00',
+      imageName: 'images/drink2.png'),
+  const Food(
+      name: 'Summer Cocktail',
+      price: 'R\$ 19,00',
+      imageName: 'images/drink3.png'),
+  const Food(
+      name: 'Strawberry cocktail',
+      price: 'R\$ 9,00',
+      imageName: 'images/drink4.png'),
+];
+
+const List<Food> snacksList = const <Food>[
+  const Food(
+      name: 'Cheesecake',
+      price: 'R\$ 9,00',
+      imageName: 'images/snack.png'),
+  const Food(
+      name: 'Hamburguer',
+      price: 'R\$ 12,00',
+      imageName: 'images/snack2.png'),
+  const Food(
+      name: 'French Fries',
+      price: 'R\$ 10,00',
+      imageName: 'images/snack3.png'),
+  const Food(
+      name: 'Skittles',
+      price: 'R\$ 6,00',
+      imageName: 'images/snack4.png'),
+];

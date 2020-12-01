@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:project_topicos_avancados/features/home/home_page.dart';
 import 'package:project_topicos_avancados/utils/app_colors.dart';
 
 class DefaultBackground extends StatelessWidget {
   final Color color;
   final String title;
   final bool isHome;
+  final bool isDetail;
 
-  DefaultBackground({this.color, this.title, this.isHome});
+  DefaultBackground({this.color, this.title, this.isHome, this.isDetail});
 
   build(BuildContext context) {
     return Scaffold(
@@ -15,7 +17,7 @@ class DefaultBackground extends StatelessWidget {
           Container(
             color: color,
           ),
-          backButton(context: context, isHome: isHome)
+          backButton(context: context, isHome: isHome, isDetail: isDetail)
         ],
       ),
     );
@@ -49,7 +51,7 @@ class DefaultBackground extends StatelessWidget {
     ]);
   }
 
-  Widget backButton({BuildContext context, bool isHome}) {
+  Widget backButton({BuildContext context, bool isHome, bool isDetail}) {
     var textStyle = TextStyle(
         fontSize: 24,
         color: AppColors.primaryTextColor,
@@ -64,7 +66,10 @@ class DefaultBackground extends StatelessWidget {
                 color: AppColors.primaryTextColor,
                 icon: isHome ? Icon(null) : Icon(Icons.arrow_back_ios),
                 onPressed: () {
-                  Navigator.of(context, rootNavigator: true).pop();
+                  if (isDetail)
+                    navigateToHomePage(context: context);
+                  else 
+                    Navigator.of(context, rootNavigator: true).pop();
                 }),
             Text(
               title,
@@ -73,5 +78,9 @@ class DefaultBackground extends StatelessWidget {
             ),
           ],
         ));
+  }
+  navigateToHomePage({BuildContext context}) {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (BuildContext context) => HomePage()));
   }
 }

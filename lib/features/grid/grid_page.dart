@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:project_topicos_avancados/data/drinks.dart';
 import 'package:project_topicos_avancados/data/food.dart';
-import 'package:project_topicos_avancados/data/snacks.dart';
+import 'package:project_topicos_avancados/features/details/food_detail.dart';
 import 'package:project_topicos_avancados/utils/app_colors.dart';
 
 class GridPage extends StatelessWidget {
@@ -10,43 +9,60 @@ class GridPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.count(
-      crossAxisCount: 2,
-      crossAxisSpacing: 2,
-      mainAxisSpacing: 1,
-      children: List.generate(getLength(), (index) {
-        return Center(heightFactor: 1, child: getWidget(index));
-      }),
+    return Center(
+      child: Container(
+        margin: EdgeInsets.only(top: 21),
+        child: GridView.count(
+          crossAxisCount: 2,
+          crossAxisSpacing: 2,
+          mainAxisSpacing: 1,
+          children: returnList(context: context),
+        ),
+      ),
     );
   }
 
-  Widget getWidget(int index) {
+  returnList({BuildContext context}){
     switch (tab) {
       case 1:
-        return FoodCard(food: foodList[index]);
+        return foodList.map((model) {
+            return GestureDetector(
+              child: FoodCard(food: model),
+              onTap: () {
+                navigateToFoodDetail(model: model, context: context);
+              },
+            );
+          }).toList();
         break;
       case 2:
-        return DrinksCard(drink: drinksList[index]);
+        return drinksList.map((model) {
+            return GestureDetector(
+              child: FoodCard(food: model),
+              onTap: () {
+                navigateToFoodDetail(model: model, context: context);
+              },
+            );
+          }).toList();
         break;
       case 3:
-        return SnacksCard(snacks: snacksList[index]);
+        return snacksList.map((model) {
+            return GestureDetector(
+              child: FoodCard(food: model),
+              onTap: () {
+                navigateToFoodDetail(model: model, context: context);
+              },
+            );
+          }).toList();
         break;
     }
   }
 
-  int getLength() {
-    switch (tab) {
-      case 1:
-        return foodList.length;
-        break;
-      case 2:
-        return drinksList.length;
-        break;
-      case 3:
-        return snacksList.length;
-        break;
-    }
+  navigateToFoodDetail({Food model, BuildContext context}) {
+    Navigator.of(context).push(
+        MaterialPageRoute(builder: (context) => FoodDetail(model: model)));
   }
+
+  
 }
 
 class FoodCard extends StatelessWidget {
@@ -91,87 +107,4 @@ class FoodCard extends StatelessWidget {
   }
 }
 
-class DrinksCard extends StatelessWidget {
-  const DrinksCard({Key key, this.drink}) : super(key: key);
-  final Drinks drink;
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-        elevation: 5,
-        margin: EdgeInsets.all(16),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(30),
-        ),
-        color: Colors.white,
-        child: Center(
-          child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Image(
-                    image: AssetImage(drink.imageName),
-                    height: 100,
-                    width: 100,
-                    fit: BoxFit.cover),
-                createText(data: drink.name, color: AppColors.primaryTextColor),
-                createText(
-                    data: drink.price, color: AppColors.loginBackgroundColor)
-              ]),
-        ));
-  }
-
-  Text createText({String data, Color color}) {
-    var textStyle =
-        TextStyle(fontSize: 12, color: color, fontWeight: FontWeight.bold);
-
-    return Text(
-      data,
-      style: textStyle,
-      textAlign: TextAlign.center,
-    );
-  }
-}
-
-class SnacksCard extends StatelessWidget {
-  const SnacksCard({Key key, this.snacks}) : super(key: key);
-  final Snacks snacks;
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-        elevation: 5,
-        margin: EdgeInsets.all(16),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(30),
-        ),
-        color: Colors.white,
-        child: Center(
-          child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Image(
-                    image: AssetImage(snacks.imageName),
-                    height: 100,
-                    width: 100,
-                    fit: BoxFit.cover),
-                createText(
-                    data: snacks.name, color: AppColors.primaryTextColor),
-                createText(
-                    data: snacks.price, color: AppColors.loginBackgroundColor)
-              ]),
-        ));
-  }
-
-  Text createText({String data, Color color}) {
-    var textStyle =
-        TextStyle(fontSize: 12, color: color, fontWeight: FontWeight.bold);
-
-    return Text(
-      data,
-      style: textStyle,
-      textAlign: TextAlign.center,
-    );
-  }
-}
+ 

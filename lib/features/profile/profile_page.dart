@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:project_topicos_avancados/data/user.dart';
 import 'package:project_topicos_avancados/default_background/default_background.dart';
 import 'package:project_topicos_avancados/features/home/home_page.dart';
 import 'package:project_topicos_avancados/utils/app_colors.dart';
@@ -32,6 +33,8 @@ class ProfilePage extends StatelessWidget {
   }
 
   createProfileCard() {
+    var user = User();
+   
     return Positioned(
       top: 150,
       right: 16,
@@ -48,7 +51,7 @@ class ProfilePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Image(
-                  image: AssetImage("images/profile.png"),
+                  image: AssetImage(user.imageName),
                   height: 50,
                   width: 50,
                   fit: BoxFit.cover,
@@ -58,12 +61,12 @@ class ProfilePage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     createText(
-                        data: 'Tamires Pereira',
+                        data: user.name,
                         size: 14,
                         fontWeight: FontWeight.bold),
                     SizedBox(height: 12),
                     createText(
-                        data: 'tamires@gmail.com',
+                        data: user.email,
                         size: 12,
                         fontWeight: FontWeight.normal),
                     SizedBox(height: 12),
@@ -137,8 +140,11 @@ class MyStatefulWidget extends StatefulWidget {
 }
 
 enum PaymentMethod { card, bank, paypal }
+
+ var user = User();
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
-  PaymentMethod _character = PaymentMethod.card;
+ 
+  PaymentMethod _character = user.paymentMethod;
 
   @override
   Widget build(BuildContext context) {

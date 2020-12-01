@@ -1,17 +1,13 @@
-enum PaymentMethod { card, bank, paypal }
+//enum PaymentMethod { card, bank, paypal }
+
+import 'package:project_topicos_avancados/features/profile/profile_page.dart';
 
 class User {
-  int id;
-  String name;
-  PaymentMethod paymentMethod;
- 
-  User({this.id, this.name, this.paymentMethod});
- 
-  static List<User> getUser() {
-    return <User>[
-      User(id: 1, name: "Card", paymentMethod: PaymentMethod.card),
-      User(id: 2, name: "Bank Account", paymentMethod: PaymentMethod.bank),
-      User(id: 3, name: "Paypal", paymentMethod: PaymentMethod.paypal),
-    ];
-  }
+  const User({this.email: 'tamires@gmail.com', this.name: "Tamires", this.imageName: "images/profile.png",
+              this.paymentMethod: PaymentMethod.paypal});
+  final String email;
+  final String name;
+  final String imageName;
+  final PaymentMethod paymentMethod;
+
 }
