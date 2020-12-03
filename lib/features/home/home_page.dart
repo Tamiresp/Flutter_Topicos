@@ -20,6 +20,4 @@ class HomePage extends StatelessWidget {
      
     );
   }
-
-  
 }

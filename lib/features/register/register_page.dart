@@ -14,7 +14,7 @@ class RegisterPage extends StatelessWidget {
           DefaultBackground(
               color: Colors.white,
               title: 'Register',
-              isHome: false, isDetail: false,),
+              isHome: false),
           DefaultBackground().backgroundImg(imageName: "iconChef"),
 
           Positioned(

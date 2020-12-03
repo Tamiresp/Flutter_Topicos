@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:project_topicos_avancados/data/cart.dart';
 import 'package:project_topicos_avancados/features/grid/grid_page.dart';
 import 'package:project_topicos_avancados/utils/app_colors.dart';
-
 class TabPage extends StatelessWidget {
+  Cart cart = new Cart();
+                  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -15,13 +17,20 @@ class TabPage extends StatelessWidget {
               title: Text('Delicious\nfood for you', style: TextStyle(fontSize: 24),),
               backgroundColor: AppColors.loginBackgroundColor,
               actions: <Widget>[
-                IconButton(
+                Stack(children: [
+                  IconButton(
                   icon: Icon(
                     Icons.shopping_cart_outlined,
                     color: Colors.white,
                   ),
-                  onPressed: () {},
-                )
+                  onPressed: () {
+                    cart.setQtd(11111);
+                  },
+                ),
+                Positioned(
+                  left: 16,
+                  child: AddItem())
+                ],)
               ],
               bottom: TabBar(
                 tabs: [
@@ -41,5 +50,21 @@ class TabPage extends StatelessWidget {
         ),
       ), 
     );
+  }
+}
+
+class AddItem extends StatefulWidget {
+  AddItem({Key key}) : super(key: key);
+
+  @override
+  _AddItemState createState() => _AddItemState();
+}
+
+class _AddItemState extends State<AddItem> {
+  Cart _cart = new Cart();
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(_cart.getQtd().toString());  
   }
 }

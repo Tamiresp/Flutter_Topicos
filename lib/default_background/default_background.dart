@@ -6,9 +6,8 @@ class DefaultBackground extends StatelessWidget {
   final Color color;
   final String title;
   final bool isHome;
-  final bool isDetail;
 
-  DefaultBackground({this.color, this.title, this.isHome, this.isDetail});
+  DefaultBackground({this.color, this.title, this.isHome});
 
   build(BuildContext context) {
     return Scaffold(
@@ -17,7 +16,7 @@ class DefaultBackground extends StatelessWidget {
           Container(
             color: color,
           ),
-          backButton(context: context, isHome: isHome, isDetail: isDetail)
+          backButton(context: context, isHome: isHome)
         ],
       ),
     );
@@ -66,10 +65,7 @@ class DefaultBackground extends StatelessWidget {
                 color: AppColors.primaryTextColor,
                 icon: isHome ? Icon(null) : Icon(Icons.arrow_back_ios),
                 onPressed: () {
-                  if (isDetail)
-                    navigateToHomePage(context: context);
-                  else 
-                    Navigator.of(context, rootNavigator: true).pop();
+                  Navigator.of(context, rootNavigator: true).pop();
                 }),
             Text(
               title,

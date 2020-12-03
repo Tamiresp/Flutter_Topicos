@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:project_topicos_avancados/data/cart.dart';
 import 'package:project_topicos_avancados/data/food.dart';
 import 'package:project_topicos_avancados/default_background/default_background.dart';
+import 'package:project_topicos_avancados/features/home/home_page.dart';
 import 'package:project_topicos_avancados/utils/app_colors.dart';
 
 class FoodDetail extends StatelessWidget {
@@ -13,17 +15,16 @@ class FoodDetail extends StatelessWidget {
         body: Stack(
       children: [
         DefaultBackground(
-          color: AppColors.defaultBackgroundColor,
+          color: AppColors.grayBackgroundColor,
           title: "",
-          isHome: false,
-          isDetail: true,
+          isHome: false
         ),
         SingleChildScrollView(
             child: Padding(
-          padding: EdgeInsets.only(top: 100, left: 16, right: 16),
+          padding: EdgeInsets.only(top: 100, left: 24, right: 24),
           child: Column(
             children: [
-              Image(image: AssetImage(model.imageName)),
+              Image(image: AssetImage(model.imageName), height: 250, width: 250,),
               createText(
                   data: model.name,
                   color: AppColors.primaryTextColor,
@@ -36,11 +37,15 @@ class FoodDetail extends StatelessWidget {
                   size: 18,
                   font: FontWeight.bold),
               SizedBox(height: 16),
-              createText(
-                  data: 'Delivery info',
-                  color: AppColors.primaryTextColor,
-                  size: 12,
-                  font: FontWeight.bold),
+              Row(
+                children: [
+                  createText(
+                      data: 'Delivery info',
+                      color: AppColors.primaryTextColor,
+                      size: 12,
+                      font: FontWeight.bold),
+                ],
+              ),
               SizedBox(height: 16),
               createText(
                   data:
@@ -49,11 +54,15 @@ class FoodDetail extends StatelessWidget {
                   size: 12,
                   font: FontWeight.normal),
               SizedBox(height: 16),
-              createText(
-                data: "Return Policy",
-                color: AppColors.primaryTextColor,
-                size: 12,
-                font: FontWeight.bold,
+              Row(
+                children: [
+                  createText(
+                    data: "Return Policy",
+                    color: AppColors.primaryTextColor,
+                    size: 12,
+                    font: FontWeight.bold,
+                  ),
+                ],
               ),
               SizedBox(height: 16),
               createText(
@@ -66,13 +75,18 @@ class FoodDetail extends StatelessWidget {
               SizedBox(height: 16),
               CupertinoButton(
                 borderRadius: BorderRadius.all(Radius.circular(30)),
-                onPressed: () {},
+                onPressed: () {
+                  Cart cart = new Cart();
+                  cart.setQtd(11111);
+                  navigateToHomePage(context: context);
+                },
                 child: Text("Add to cart"),
                 color: AppColors.loginBackgroundColor,
               ),
             ],
           ),
-        ))
+        )),
+        backButton(context: context)
       ],
     ));
   }
@@ -85,5 +99,25 @@ class FoodDetail extends StatelessWidget {
       style: textStyle,
       textAlign: TextAlign.justify,
     );
+  }
+
+  Widget backButton({BuildContext context}) {
+    return Container(
+        alignment: Alignment.topLeft,
+        padding: EdgeInsets.only(top: 50),
+        child: Row(
+          children: [
+            IconButton(
+                color: AppColors.primaryTextColor,
+                icon: Icon(Icons.arrow_back_ios),
+                onPressed: () {
+                  navigateToHomePage(context: context);
+                })
+          ],
+        ));
+  }
+  navigateToHomePage({BuildContext context}) {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (BuildContext context) => HomePage()));
   }
 }
