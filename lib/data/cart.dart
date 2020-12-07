@@ -1,12 +1,8 @@
 class Cart {
 
-  int qtd = 0;
+  int qtd = 10;
 
   getQtd() {
     return qtd;
-  }
-
-  setQtd(int newQtd) {
-    qtd = newQtd;
   }
 }

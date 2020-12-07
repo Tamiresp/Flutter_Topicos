@@ -3,12 +3,28 @@ import 'package:project_topicos_avancados/data/cart.dart';
 import 'package:project_topicos_avancados/features/grid/grid_page.dart';
 import 'package:project_topicos_avancados/utils/app_colors.dart';
 class TabPage extends StatelessWidget {
-  Cart cart = new Cart();
-                  
+          
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: DefaultTabController(
+      home: AddItem()
+    );
+  }
+}
+
+class AddItem extends StatefulWidget {
+  AddItem({Key key}) : super(key: key);
+
+  @override
+  _AddItemState createState() => _AddItemState();
+}
+
+class _AddItemState extends State<AddItem> {
+  Cart _cart = new Cart();
+
+  @override
+  Widget build(BuildContext context) {
+    return DefaultTabController(
         length: 3,
         child: Scaffold(
           backgroundColor: AppColors.grayBackgroundColor,
@@ -24,12 +40,12 @@ class TabPage extends StatelessWidget {
                     color: Colors.white,
                   ),
                   onPressed: () {
-                    cart.setQtd(11111);
+                    
                   },
                 ),
                 Positioned(
                   left: 16,
-                  child: AddItem())
+                  child: Text(_cart.getQtd().toString()))
                 ],)
               ],
               bottom: TabBar(
@@ -48,23 +64,6 @@ class TabPage extends StatelessWidget {
             ],
           ),
         ),
-      ), 
-    );
-  }
-}
-
-class AddItem extends StatefulWidget {
-  AddItem({Key key}) : super(key: key);
-
-  @override
-  _AddItemState createState() => _AddItemState();
-}
-
-class _AddItemState extends State<AddItem> {
-  Cart _cart = new Cart();
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(_cart.getQtd().toString());  
+      );
   }
 }

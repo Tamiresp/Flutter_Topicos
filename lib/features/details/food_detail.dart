@@ -76,9 +76,7 @@ class FoodDetail extends StatelessWidget {
               CupertinoButton(
                 borderRadius: BorderRadius.all(Radius.circular(30)),
                 onPressed: () {
-                  Cart cart = new Cart();
-                  cart.setQtd(11111);
-                  navigateToHomePage(context: context);
+                 navigateToHomePage(context: context);
                 },
                 child: Text("Add to cart"),
                 color: AppColors.loginBackgroundColor,
