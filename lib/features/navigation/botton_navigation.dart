@@ -8,8 +8,8 @@ class BottomNavigation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
    
-    return new MaterialApp(
-      home: DefaultTabController(
+    return new Scaffold(
+      body: DefaultTabController(
         length: 3,
         child: new Scaffold(
           body: TabBarView(
